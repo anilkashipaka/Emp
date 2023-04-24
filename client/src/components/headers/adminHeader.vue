@@ -7,7 +7,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="#" @click="logout">Logout</a></li>
           
         </ul>
       </div>
@@ -17,7 +17,18 @@
 
 <script>
   export default {
-    
+    data(){
+      return {
+      
+      }
+    },
+    methods: {
+        logout(){
+          localStorage.clear()
+          this.$router.push('/');
+        }
+      }
+   
   }
 </script>
 

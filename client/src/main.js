@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Vuerouter from 'vue-router'
+import VueRouter from 'vue-router'
 
 import VueResource from 'vue-resource'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -10,16 +10,16 @@ Vue.use(VueResource);
 
 Vue.config.productionTip = false
 
-Vue.use(Vuerouter);
-import { router }  from './router'
+Vue.use(VueRouter);
+import { routes }  from './routes'
 
-const routes = new Vuerouter({
+const router = new VueRouter({
   mode: 'history',
-  router
+  routes
 })
 
 
 new Vue({
-  routes,
+  router,
  render: h => h(App),
 }).$mount('#app')

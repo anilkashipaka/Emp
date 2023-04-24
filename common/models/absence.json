@@ -10,6 +10,10 @@
       "type": "date",
       "required": false
     },
+    "leaveType":{
+      "type": "string",
+      "required": false
+    },
     "endDate": {
       "type": "date",
       "required": false
@@ -28,7 +32,8 @@
       "required": false
     },
     "leaves": {
-      "type": "number"
+      "type": "number",
+       "required": false
     },
     "managerID": {
       "type": "Number",
@@ -42,6 +47,12 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
       "permission": "ALLOW"
     }
   ],

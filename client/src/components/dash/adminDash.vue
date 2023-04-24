@@ -1,10 +1,14 @@
 <template>
-    <div id="app">
-        <app-header></app-header>
+    <div>
+       <app-adminheader></app-adminheader>
         <button @click="Register">Register</button>
         <button @click="GetAllusers">Employees</button>
         <button @click="getAllAbsence">Absence</button>
-        <div v-if="REgister"><app-register></app-register></div>
+
+      
+
+
+    <div v-if="REgister"><app-register></app-register></div>
     <div v-if="GEtAllusers"><app-getallusers></app-getallusers></div>
     <div v-if="GEtAllAbsence"><app-getallabsence></app-getallabsence></div>
     </div>
@@ -14,9 +18,8 @@
   import register from '../operations/addUser.vue';
   import GetAllusers from '../operations/getAllUsers.vue';
   import getAllAbsence from '../operations/getAllAbsence.vue';
-  import appHeader from '../appHeader.vue';
+  import adminHeader from '../headers/adminHeader.vue';
   export default {
-    name: 'App',
     data(){
          return {
             REgister : false,
@@ -28,7 +31,7 @@
       appRegister: register,
       appGetallusers: GetAllusers,
       appGetallabsence: getAllAbsence,
-      appHeader: appHeader
+      appAdminheader: adminHeader
     },
     methods:{
         Register(){

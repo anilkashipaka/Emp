@@ -9,7 +9,6 @@
                         <h2 class="card-title h3">Leave Applications</h2>
                         <p class="card-subtitle">Application of Leaves by Employees</p>
                     </div>
-                    <a class="btn pmd-ripple-effect btn-outline-primary ml-auto btn-sm" href="leave.html">View All</a>
                 </div>
                 <!-- Card Header End -->
 
@@ -32,9 +31,10 @@
                                         <th></th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                    
-                                            <tr v-for="(employee,index) in employees" :key="index">
+                                            <tr v-for="(employee,index) in employees[undefined]" :key="index">
                                                 <td>{{employee.userName}}</td>
                                                 <td>{{employee.leaveType}}</td>
                                                
@@ -44,14 +44,7 @@
                                                 <td>{{employee.leaves}}</td>
                                                 
                                                 <td>{{employee.status}}</td>
-                                                <td>
-                                                    <a href="javascript:void(0);" class="pmd-btn-fab btn-xs btn-outline-secondary pmd-ripple-effect btn mr-2">
-                                                        <i class="material-icons" @click="accept">Accept</i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" title="Reject" class="pmd-btn-fab btn-xs btn-outline-danger pmd-ripple-effect btn" data-toggle="modal" data-target="#reject-modal">
-                                                        <i class="material-icons" @click="reject">Reject</i>
-                                                    </a>
-                                                </td>
+                                                <td  v-if="employee.status=='pending'"><button class="btn btn-warning">Edit</button></td>
                                             </tr>
                                 </tbody>
                             </table>
@@ -70,25 +63,24 @@
     export default {
         data() {
             return {
-                 employees: []
+                employees: [],
+                userID:localStorage.getItem('userID')
             }
         },
-        methods:{
-         getEmployeerequest() {
-            this.$http.get('http://localhost:3000/api/absences')
-            .then((response) => {
-                this.employees = response.data;
-                console.log(this.employees);
-                console.log(response);
-            },
-            err => {
-                console.log(err);
-            });
-         }
-
+        methods: {
+            getUserAbsence() {
+                this.$http.get(`http://localhost:3000/api/absences/getUserAbscencebyID?undefined=${this.userID}`)
+                     .then(res => {
+                        console.log(res);
+                        this.employees = res.data;
+                     })
+                     .catch(err => {
+                        console.log(err);
+                     })
+            }
         },
-        beforeMount() {
-            this.getEmployeerequest();
+        beforeMount(){
+            this.getUserAbsence();
         }
     }
 </script>

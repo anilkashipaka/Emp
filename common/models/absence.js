@@ -58,7 +58,7 @@ module.exports = function(Absence) {
             }
             data.sickLeaves = sl;
             data.vacationLeaves = vl;
-         
+
             data.save();
             Absence.app.models.Myuser.updateAll({userID: data.userID}, {sickLeaves: sl, vacationLeaves: vl}, (err, res) =>{
               if (err) return next(err);
@@ -129,5 +129,27 @@ module.exports = function(Absence) {
     ],
     returns: {args: Absence, type: 'object'},
     http: {verb: 'get', path: '/getAbsenceRequest'},
+  });
+
+  // getallabsenceRequests with same userid
+  Absence.getUserAbsencebyID = (userID, next) => {
+    Absence.find({where: {userID: userID}}, (err, result) =>{
+      if (err) {
+        return next(err);
+      }      else if (result != null) {
+        console.log(result);
+        return next(null, result);
+      }
+      return next(err);
+    });
+  };
+
+  // collecting the common USERID guy with absence model
+  Absence.remoteMethod('getUserAbsencebyID', {
+    accepts: [
+      {args: 'userID', type: 'Number'},
+    ],
+    returns: {args: Absence, type: 'object'},
+    http: {verb: 'get', path: '/getUserAbscencebyID'},
   });
 };
