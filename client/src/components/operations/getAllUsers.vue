@@ -10,7 +10,7 @@
           <h5 class="card-title"><span style="color:black;">userEmail : </span>{{ user.email}} </h5>
           <h5 class="card-title"><span style="color:black;">userRole : </span> {{ user.role}} </h5>
           <h5 class="card-title"><span style="color:black;">userManager : </span>{{ user.managerID}} </h5>
-          <a href="#" class="btn btn-primary">Delete User</a>
+         
     </div>
       </div>
          </div> 

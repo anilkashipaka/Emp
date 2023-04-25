@@ -52,7 +52,8 @@
                       console.log(res);
                       localStorage.setItem('userName',res.body.userName);
                       localStorage.setItem('userID',res.body.userID);
-                      localStorage.setItem('manager',res.body.managerID);
+                      localStorage.setItem('managerID',res.body.managerID);
+                      localStorage.setItem('token',res.body.userName);
                     
                       if(res.body.role=='admin'){
                         this.$router.push('/adminDash')

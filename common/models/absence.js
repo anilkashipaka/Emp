@@ -152,4 +152,26 @@ module.exports = function(Absence) {
     returns: {args: Absence, type: 'object'},
     http: {verb: 'get', path: '/getUserAbscencebyID'},
   });
+
+  // get the user Absence under the manager id
+  Absence.getUserAbsenceUnderManager = (managerID, next) => {
+    Absence.find({where: {managerID: managerID}}, (err, result) =>{
+      if (err) {
+        return next(err);
+      }      else if (result != null) {
+        console.log(result);
+        return next(null, result);
+      }
+      return next(err);
+    });
+  };
+
+  // collecting the common USERID guy with absence model
+  Absence.remoteMethod('getUserAbsenceUnderManager', {
+    accepts: [
+      {args: 'managerID', type: 'Number'},
+    ],
+    returns: {args: Absence, type: 'object'},
+    http: {verb: 'get', path: '/getUserAbsenceUnderManager'},
+  });
 };

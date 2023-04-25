@@ -34,7 +34,7 @@
                                 </thead>
                                 <tbody>
                                    
-                                            <tr v-for="(employee,index) in employees" :key="index">
+                                            <tr v-for="(employee,index) in employees[undefined]" :key="index">
                                                 <td>{{employee.userName}}</td>
                                                 <td>{{employee.leaveType}}</td>
                                                
@@ -70,27 +70,27 @@
     export default {
         data() {
             return {
-                 employees: []
+                 employees: [],
+                 managerID:localStorage.getItem('managerID')
             }
         },
         methods:{
-         getEmployeerequest() {
-            this.$http.get('http://localhost:3000/api/absences')
-            .then((response) => {
-                this.employees = response.data;
-                console.log(this.employees);
-                console.log(response);
-            },
-            err => {
-                console.log(err);
-            });
-         }
-
-        },
-        beforeMount() {
-            this.getEmployeerequest();
-        }
+        getUserAbsenceUnderManager(){
+            this.$http.get(`http://localhost:3000/api/absences/getUserAbsenceUnderManager?undefined=${this.managerID}`)
+                 .then(res => {
+                      console.log(res);
+                      this.employees = res.data
+                      
+                 })
+                 .catch(err => {
+                    console.log(err);
+                 })
+                }
+    },
+    beforeMount(){
+        this.getUserAbsenceUnderManager();
     }
+}
 </script>
 
 <style lang="css" scoped>

@@ -81,6 +81,9 @@
         },
         beforeMount(){
             this.getUserAbsence();
+        },
+        getUserAbsencerUnderManager(){
+            
         }
     }
 </script>

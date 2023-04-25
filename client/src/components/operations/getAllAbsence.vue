@@ -9,7 +9,7 @@
               <h5 class="card-title"><span style="color:black;">userManager : </span>{{user.managerID}} </h5>
               <h5 class="card-title"><span style="color:black;">userstatus : </span>{{user.status}} </h5>
               <h5 class="card-title"><span style="color:black;">reason : </span>{{user.reason}} </h5>
-              <a href="#" class="btn btn-primary">Delete User</a>
+             
         </div>
           </div>
              </div> 

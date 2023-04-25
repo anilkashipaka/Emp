@@ -61,7 +61,8 @@
                     reason: '',
                     leaves:'',
                     userName:localStorage.getItem('userName'),
-                    userID:localStorage.getItem('userID')
+                    userID:localStorage.getItem('userID'),
+                    managerID:localStorage.getItem('managerID'),
                 }
             }
         },
