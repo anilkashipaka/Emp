@@ -45,12 +45,12 @@
                                                 
                                                 <td>{{employee.status}}</td>
                                                 <td>
-                                                    <a href="javascript:void(0);" class="pmd-btn-fab btn-xs btn-outline-secondary pmd-ripple-effect btn mr-2">
-                                                        <i class="material-icons" @click="accept">Accept</i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" title="Reject" class="pmd-btn-fab btn-xs btn-outline-danger pmd-ripple-effect btn" data-toggle="modal" data-target="#reject-modal">
-                                                        <i class="material-icons" @click="reject">Reject</i>
-                                                    </a>
+                                                    
+                                                        <button class="material-icons" @click="acceptRequest(index)">Accept</button>
+                                                    
+                                                    
+                                                        <button class="material-icons" @click="rejectRequest(index)">reject</button>
+                                                    
                                                 </td>
                                             </tr>
                                 </tbody>
@@ -75,10 +75,39 @@
             }
         },
         methods:{
+            acceptRequest(index){
+                let userID=this.employees.undefined[index].id;
+                console.log(userID);
+               let body = {
+                userID
+               }
+               this.$http.post('http://localhost:3000/api/absences/acceptRequest',body,function(err,data){
+                if(err){
+                    console.log(err);
+                }
+                console.log(data);
+                
+               })
+               this.getUserAbsenceUnderManager();
+            },
+            rejectRequest(index){
+                let userID=this.employees.undefined[index].id;
+               let body = {
+                userID
+               }
+               this.$http.post('http://localhost:3000/api/absences/rejectRequest',body,function(err,data){
+                if(err){
+                    console.log(err);
+                }
+                console.log(data);
+            
+               })
+               this.getUserAbsenceUnderManager();
+            },
         getUserAbsenceUnderManager(){
             this.$http.get(`http://localhost:3000/api/absences/getUserAbsenceUnderManager?undefined=${this.managerID}`)
                  .then(res => {
-                      console.log(res);
+                      console.log(res.data);
                       this.employees = res.data
                       
                  })

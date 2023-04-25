@@ -40,7 +40,7 @@ module.exports = function(Absence) {
 
          // accepting the request
   Absence.accept = (userID, next) => {
-    Absence.findOne({where: {userID: userID}}, (err, result) => {
+    Absence.findOne({where: {id: userID}}, (err, result) => {
       if (err) return next(err);
       else if (result != null) {
         result.status = 'accepted';
@@ -86,7 +86,7 @@ module.exports = function(Absence) {
 
         // rejecting the request
   Absence.reject = (userID, next) => {
-    Absence.findOne({where: {userID: userID}}, (err, result) => {
+    Absence.findOne({where: {id: userID}}, (err, result) => {
       if (err) return next(err);
       else if (result != null) {
         result.status = 'rejected';

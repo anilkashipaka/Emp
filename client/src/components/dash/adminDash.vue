@@ -1,16 +1,16 @@
 <template>
     <div>
        <app-adminheader></app-adminheader>
-        <button @click="Register">Register</button>
-        <button @click="GetAllusers">Employees</button>
-        <button @click="getAllAbsence">Absence</button>
+       <button type="button" class="btn btn-primary"   @click="resgister">Register</button>
+<button type="button" class="btn btn-success" @click="getAllUsers">Employees Info</button>
+<button type="button" class="btn btn-warning" @click="getAllAbsence">Absence Info</button>
 
       
 
 
-    <div v-if="REgister"><app-register></app-register></div>
-    <div v-if="GEtAllusers"><app-getallusers></app-getallusers></div>
-    <div v-if="GEtAllAbsence"><app-getallabsence></app-getallabsence></div>
+    <app-register v-if="REgister"></app-register>
+    <app-getallusers v-if="GEtAllusers"></app-getallusers>
+    <app-getallabsence v-if="GEtAllAbsence"></app-getallabsence>
     </div>
   </template>
   
@@ -34,18 +34,18 @@
       appAdminheader: adminHeader
     },
     methods:{
-        Register(){
-            this.REgister = true;
+        register(){
+            this.REgister = !this.REgister;
             this.GEtAllusers=false;
             this.GEtAllAbsence=false;
         },
-        GetAllusers(){
-            this.GEtAllusers = true;
+        getAllUsers(){
+            this.GEtAllusers = !this.GEtAllusers;
             this.REgister = false;
             this.GEtAllAbsence=false;
         },
         getAllAbsence(){
-            this.GEtAllAbsence = true;
+            this.GEtAllAbsence = !this.GEtAllAbsence;
             this.GEtAllusers = false;
             this.REgister = false;
         }

@@ -5,7 +5,7 @@
 
     
 
-<button type="button" class="btn btn-primary"   @click="leave">Leave Request</button>
+<button type="button" class="btn btn-primary"   @click="leaveRequest">Leave Request</button>
 <button type="button" class="btn btn-success" @click="employeesInfo">Employees Info</button>
 <button type="button" class="btn btn-warning" @click="absenceInfo">Absence Info</button>
 
