@@ -1,13 +1,14 @@
 <template>
     <div>
         <app-employeeheader></app-employeeheader>
+        <div class="pull-right">
+          <div class="btn-group">
+           <button type="button" class="btn btn-primary btn-filter"   @click="request">Request form</button>
+          <button type="button" class="btn btn-success btn-filter" @click="status">status</button>
+          </div>
+        </div>
         
-          <div>
-            <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" @click="request">Request Form</button>
-          </div>
-          <div>
-            <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" @click="status">status</button>
-          </div>
+  
        <app-request v-if="requestform"></app-request>
        <app-getuserabsence v-if="statusform"></app-getuserabsence>
 
@@ -35,9 +36,11 @@ import getUserAbsence from '../operations/getUserAbsence.vue';
     methods: {
         request() {
             this.requestform = !this.requestform;
+            this.statusform = false;
         },
         status(){
-           this.statusform = !this.statusform
+           this.statusform = !this.statusform;
+           this.requestform=false;
         }
     }
 

@@ -63,7 +63,8 @@
                     userName:localStorage.getItem('userName'),
                     userID:localStorage.getItem('userID'),
                     managerID:localStorage.getItem('managerID'),
-                }
+                    role:localStorage.getItem('role')
+                       }
             }
         },
         methods: {

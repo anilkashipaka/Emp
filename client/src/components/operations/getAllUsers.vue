@@ -1,19 +1,56 @@
 <template>
     <div>
     
-    <div v-for="(user,index) in users" :key="index" style="display: inline-block; margin:50px 10px 50px 10px; padding:20px 20px 20px 20px;
-    background:greenyellow">
-      <div class="card" style="width: 200px; height:270px; border-radius:10px">
-        <div class="card-body">
-          <h5 class="card-title"> <span style="color:black;">userID : </span>{{ user.userID}} </h5>
-          <h5 class="card-title"><span style="color:black;">userName : </span>{{ user.userName}} </h5>
-          <h5 class="card-title"><span style="color:black;">userEmail : </span>{{ user.email}} </h5>
-          <h5 class="card-title"><span style="color:black;">userRole : </span> {{ user.role}} </h5>
-          <h5 class="card-title"><span style="color:black;">userManager : </span>{{ user.managerID}} </h5>
-         
-    </div>
+     
+    <!-- Leave Application Block End -->
+    <div class="col-12" style="box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+      <!-- Card Component -->
+      <div class="card pmd-card">
+          <!-- Card Header -->
+          <div class="card-header pmd-card-border d-flex align-items-start">
+              <div class="media-body">
+                  <h2 class="card-title h3">Employee Details</h2>
+                  <p class="card-subtitle">All the Details of the employee Record</p>
+              </div>
+             
+          </div>
+          <!-- Card Header End -->
+
+          <!-- Card Body -->
+          <div class="card-body">
+              <div class="body">
+                  <div class="table-responsive">
+                      <table class="table pmd-table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Employee</th>
+                                  <th>UserID</th>
+                                  <th>ManagerID</th>
+                                  <th>Email</th>
+                                  <th>Role</th>
+                                  
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                             
+                                      <tr   v-for="(user,index) in users" :key="index">
+                                          <td>{{user.userName}}</td>
+                                          <td>{{user.userID}}</td>
+                                          <td>{{user.managerID}}</td>
+                                          <td>{{user.email}}</td>
+                                          <td>{{user.role}}</td>
+                                         
+                                      </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <!-- Card Body End -->
       </div>
-         </div> 
+      <!-- Card Component End -->
+  </div>
            
       
     </div>
@@ -32,7 +69,7 @@
         this.$http.get('http://localhost:3000/api/myusers')
         .then(res => {
           console.log(res);
-          this.users = res.data;
+          this.users = res.body;
         }, err => {
           console.log(err);
         })

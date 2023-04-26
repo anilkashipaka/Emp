@@ -5,7 +5,7 @@
             <div class="form-row display">
               <div class="form-group col-md-5">
                 <label for="userName">Name</label>
-                <input type="text" class="form-control" id="name" name="userName" v-model="User.name" placeholder="name" autocomplete="off">
+                <input type="text" class="form-control" id="name" name="userName" v-model="User.userName" placeholder="name" autocomplete="off">
               </div>
               <div class="form-group col-md-5">
                 <label for="email">Email</label>
@@ -27,9 +27,9 @@
                 <label for="text">Role</label>
                 <br>
                 <select class="custom-select my-1 mr-sm-2" id="Role" name="Role" v-model="User.role">
-                    <option value="Employee">Employee</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Admin" selected>Admin</option>
+                    <option value="employee">Employee</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin" selected>Admin</option>
                  </select>
               </div>
             </div>

@@ -1,16 +1,22 @@
 <template>
     <div>
        <app-adminheader></app-adminheader>
-       <button type="button" class="btn btn-primary"   @click="resgister">Register</button>
-<button type="button" class="btn btn-success" @click="getAllUsers">Employees Info</button>
-<button type="button" class="btn btn-warning" @click="getAllAbsence">Absence Info</button>
+
+       <div class="pull-right">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary"   @click="register">Register</button>
+            <button type="button" class="btn btn-success" @click="getAllUsers">Employees Info</button>
+            <button type="button" class="btn btn-warning" @click="getAllAbsence">Absence Info</button>
+        </div>
+       </div>
+       
 
       
 
 
-    <app-register v-if="REgister"></app-register>
-    <app-getallusers v-if="GEtAllusers"></app-getallusers>
-    <app-getallabsence v-if="GEtAllAbsence"></app-getallabsence>
+    <app-register v-if="registerbtn"></app-register>
+    <app-getallusers v-if="getAllUsersbtn"></app-getallusers>
+    <app-getallabsence v-if="getAllAbsencebtn"></app-getallabsence>
     </div>
   </template>
   
@@ -22,9 +28,9 @@
   export default {
     data(){
          return {
-            REgister : false,
-            GEtAllusers: false,
-            GEtAllAbsence : false
+            registerbtn : false,
+             getAllUsersbtn: false,
+           getAllAbsencebtn : false
         }
     },
     components:{
@@ -35,19 +41,19 @@
     },
     methods:{
         register(){
-            this.REgister = !this.REgister;
-            this.GEtAllusers=false;
-            this.GEtAllAbsence=false;
+            this.registerbtn = !this.registerbtn;
+            this.getAllUsersbtn=false;
+            this.getAllAbsencebtn=false;
         },
         getAllUsers(){
-            this.GEtAllusers = !this.GEtAllusers;
-            this.REgister = false;
-            this.GEtAllAbsence=false;
+            this.getAllUsersbtn = !this.getAllUsersbtn;
+            this.registerbtn = false;
+            this.getAllAbsencebtn=false;
         },
         getAllAbsence(){
-            this.GEtAllAbsence = !this.GEtAllAbsence;
-            this.GEtAllusers = false;
-            this.REgister = false;
+            this.getAllAbsencebtn = !this.getAllAbsencebtn;
+            this.getAllUsersbtn = false;
+            this.registerbtn = false;
         }
     }
    

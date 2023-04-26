@@ -9,8 +9,7 @@
                         <h2 class="card-title h3">Leave Applications</h2>
                         <p class="card-subtitle">Application of Leaves by Employees</p>
                     </div>
-                    <a class="btn pmd-ripple-effect btn-outline-primary ml-auto btn-sm" href="leave.html">View All</a>
-                </div>
+                   </div>
                 <!-- Card Header End -->
 
                 <!-- Card Body -->
@@ -18,7 +17,7 @@
                     <div class="body">
                         <div class="table-responsive">
                             <table class="table pmd-table table-hover">
-                                <thead>
+                                <thead >
                                     <tr>
                                         <th>Employee</th>
                                         <th>Leave Type</th>
@@ -46,10 +45,10 @@
                                                 <td>{{employee.status}}</td>
                                                 <td>
                                                     
-                                                        <button class="material-icons" @click="acceptRequest(index)">Accept</button>
+                                                        <button class="material-icons btn btn-success btn-filter" @click="acceptRequest(index)">Accept</button>
                                                     
                                                     
-                                                        <button class="material-icons" @click="rejectRequest(index)">reject</button>
+                                                        <button class="material-icons btn btn-danger btn-filter" @click="rejectRequest(index)">reject</button>
                                                     
                                                 </td>
                                             </tr>

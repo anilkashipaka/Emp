@@ -10,7 +10,7 @@
       "type": "date",
       "required": false
     },
-    "leaveType":{
+    "leaveType": {
       "type": "string",
       "required": false
     },
@@ -33,7 +33,7 @@
     },
     "leaves": {
       "type": "number",
-       "required": false
+      "required": false
     },
     "managerID": {
       "type": "Number",
@@ -43,18 +43,7 @@
   "validations": [],
   "relations": {},
   "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "ALLOW"
-    }
+   
   ],
   "methods": {}
 }

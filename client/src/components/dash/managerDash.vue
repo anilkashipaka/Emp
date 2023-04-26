@@ -3,11 +3,15 @@
 
     <app-managerheader></app-managerheader>
 
-    
+    <div class="pull-right">
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary btn-filter"   @click="leaveRequest">Leave Request</button>
+<button type="button" class="btn btn-success btn-filter" @click="employeesInfo">Employees Info</button>
+<button type="button" class="btn btn-warning btn-filter" @click="absenceInfo">Absence Info</button>
+      </div>
+    </div>
 
-<button type="button" class="btn btn-primary"   @click="leaveRequest">Leave Request</button>
-<button type="button" class="btn btn-success" @click="employeesInfo">Employees Info</button>
-<button type="button" class="btn btn-warning" @click="absenceInfo">Absence Info</button>
+
 
    <app-requestleave v-if="leave"></app-requestleave>
     <app-undermanagerabsence v-if="absence"></app-undermanagerabsence>

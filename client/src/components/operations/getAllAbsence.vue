@@ -1,18 +1,55 @@
 <template>
     <div>
         
-        <div v-for="(user,index) in absenceUsers" :key="index" style="display: inline-block; margin:50px 10px 50px 10px; padding:20px 20px 20px 20px;
-        background:greenyellow;">
-          <div class="card" style="width: 200px; height:270px; border-radius:10px">
+      <div class="col-12" style="box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        <!-- Card Component -->
+        <div class="card pmd-card">
+            <!-- Card Header -->
+            <div class="card-header pmd-card-border d-flex align-items-start">
+                <div class="media-body">
+                    <h2 class="card-title h3">Absence Requests </h2>
+                    <p class="card-subtitle">All the Details of the Absence Record</p>
+                </div>
+               
+            </div>
+            <!-- Card Header End -->
+
+            <!-- Card Body -->
             <div class="card-body">
-              <h5 class="card-title"> <span style="color:black;">userID : </span>{{ user.userID}} </h5>
-              <h5 class="card-title"><span style="color:black;">userManager : </span>{{user.managerID}} </h5>
-              <h5 class="card-title"><span style="color:black;">userstatus : </span>{{user.status}} </h5>
-              <h5 class="card-title"><span style="color:black;">reason : </span>{{user.reason}} </h5>
-             
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table pmd-table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>UserID</th>
+                                    <th>ManagerID</th>
+                                    
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                  
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                                        <tr   v-for="(user,index) in absenceUsers" :key="index">
+                                            <td>{{user.userName}}</td>
+                                            <td>{{user.userID}}</td>
+                                            <td>{{user.managerID}}</td>
+                                            <td>{{user.role}}</td>
+                                            <td>{{user.status}}</td>
+                                           
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card Body End -->
         </div>
-          </div>
-             </div> 
+        <!-- Card Component End -->
+    </div>
     </div>
 </template>
 
@@ -30,7 +67,7 @@
                 this.$http.get('http://localhost:3000/api/absences')
                 .then(res => {
                     console.log(res);
-                    this.absenceUsers = res.data;
+                    this.absenceUsers = res.body;
                 }
                 ,err => {
                console.log(err);
